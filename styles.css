@@ -1,0 +1,531 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Alinear elementos en columna */
+  background-color: #121212; /* Fondo negro suave */
+}
+
+/* Estilos para el contenedor */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual ancho */
+  gap: 20px; /* Espaciado entre las tarjetas */
+  width: 90%; /* Ancho del contenedor */
+  max-width: 1200px; /* Ancho máximo */
+}
+
+.containerTitle {
+  grid-column: span 3; /* El título ocupa tres columnas */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.main-title {
+  color: #ccc;
+  font-size: 3em;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.5em;
+  margin: 0;
+  color: #a9a9a9;
+}
+
+.card {
+  background-color: #2c3e50; /* Azul oscuro para las cards */
+  padding: 40px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Proyecto */
+.project-name {
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 50px;
+  color: #a9a9a9;
+}
+
+/* Estilos para el Botón Personalizado */
+/* Shared styles */
+.magicButton,
+.customInput,
+.customSelect,
+.customTextarea,
+.switch {
+  background-color: #1e90ff; /* Azul oscuro */
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Placeholder blanco para input y textarea */
+.customInput::placeholder,
+.customTextarea::placeholder {
+  color: white;
+  opacity: 1; /* Asegura que el color blanco sea visible */
+}
+
+/* Hover and focus effects */
+.magicButton:hover,
+.customInput:hover,
+.customSelect:hover,
+.customTextarea:hover,
+.magicButton:focus,
+.customInput:focus,
+.customSelect:focus,
+.customTextarea:focus {
+  background-color: #32cd32; /* Verde claro */
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Active effects */
+.magicButton:active,
+.customInput:active,
+.customSelect:active,
+.customTextarea:active {
+  background-color: #1e90ff;
+  transform: scale(0.95);
+  border-radius: 30px;
+}
+.contenidoSelect {
+  background-color: #ccc;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+/* Custom Input */
+.customInput {
+  width: 300px;
+}
+
+/* Custom Select */
+.customSelect {
+  width: 320px;
+  appearance: none;
+  padding: 15px;
+}
+
+/* Custom Textarea */
+.customTextarea {
+  width: 320px;
+  resize: none;
+}
+
+/* Estilos para el Select Personalizado */
+.selectbox {
+  width: 320px;
+  position: relative;
+  margin: 20px auto;
+}
+
+.select {
+  background-color: #1e90ff; /* Azul oscuro */
+  color: white;
+  padding: 15px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  margin: 10px; /* Separación */
+}
+
+.select:hover {
+  background-color: #32cd32; /* Verde claro */
+}
+
+.opciones {
+  display: block; /* Cambiado de none a block para permitir la animación */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  opacity: 0; /* Inicialmente invisible */
+  transform: translateY(-10px); /* Se inicia ligeramente arriba */
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Animación suave */
+}
+
+/* Clase para mostrar las opciones con animación de entrada */
+.opciones.show {
+  display: block; /* Mostrar las opciones */
+  opacity: 1; /* Hacerlas visibles */
+  transform: translateY(0); /* Volver a su posición original */
+}
+
+/* Clase para ocultar las opciones con animación de salida */
+.opciones.hide {
+  opacity: 0; /* Hacerlas invisibles */
+  transform: translateY(-10px); /* Moverlas ligeramente hacia arriba */
+}
+
+.opcion {
+  border: 2px solid white;
+  display: flex;
+  padding: 15px;
+  margin-bottom: 10px;
+  align-items: center;
+  background-color: #1e90ff;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.3s ease;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+
+.opcion:hover {
+  background-color: #32cd32; /* Color de fondo al pasar el mouse */
+}
+.opcion.seleccionada {
+  background-color: #2ecc71; /* Color verde para la opción seleccionada */
+  color: white; /* Cambiar el color del texto para mejor contraste */
+}
+.opcion.hide {
+  opacity: 0; /* Hacerlas invisibles */
+  transform: translateY(-10px); /* Moverlas ligeramente hacia arriba */
+}
+
+.contenido-opcion {
+  display: flex;
+  align-items: center;
+}
+
+.contenido-opcion .textos {
+  display: flex;
+  flex-direction: column;
+}
+/* Estilos Responsivos */
+@media (max-width: 800px) {
+  .container {
+    grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+  }
+}
+.switch-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #2c3e50; /* Fondo de la tarjeta */
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  width: 200px; /* Ancho de la tarjeta */
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 80px; /* Ancho del interruptor */
+  height: 15px; /* Alto del interruptor */
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #3498db; /* Color de fondo inicial (azul) */
+  border-radius: 40px;
+  transition: background-color 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 36px; /* Altura del círculo */
+  width: 36px; /* Ancho del círculo */
+  left: 10px; /* Espaciado desde la izquierda */
+  bottom: 4px; /* Espaciado desde la parte inferior */
+  background-color: white; /* Color del círculo */
+  border-radius: 50%;
+  transition: transform 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50; /* Color cuando está activado (verde) */
+}
+
+input:checked + .slider:before {
+  transform: translateX(60px); /* Movimiento del círculo al estar activado */
+}
+
+.switchText {
+  margin-top: 10px; /* Espaciado superior */
+  color: white; /* Color del texto */
+  font-size: 18px; /* Tamaño del texto */
+  text-align: center; /* Centrar texto */
+  font-size: larger;
+  font-weight: 800;
+}
+
+.loading-button {
+  background-color: #3498db; /* Color de fondo inicial (azul) */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 40px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 18px; /* Tamaño del texto */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.4s, transform 0.3s; /* Transiciones suaves */
+  width: 150px; /* Ancho constante para el botón */
+  height: 50px; /* Altura constante para el botón */
+  box-sizing: border-box; /* Incluye padding y border en el cálculo de ancho y alto */
+  position: relative; /* Asegúrate de que el spinner se posicione correctamente */
+}
+
+.loading-button:hover {
+  background-color: #2980b9; /* Color en hover (más oscuro) */
+}
+
+.loading-button:disabled {
+  background-color: #95a5a6; /* Color cuando está deshabilitado */
+  cursor: not-allowed; /* Cambia el cursor cuando está deshabilitado */
+}
+
+.spinner {
+  display: none; /* Ocultar el spinner por defecto */
+  border: 4px solid rgba(255, 255, 255, 0.3); /* Color del borde */
+  border-radius: 50%; /* Borde redondeado */
+  border-top: 4px solid white; /* Color de la parte superior */
+  width: 20px; /* Ancho del spinner */
+  height: 20px; /* Alto del spinner */
+  position: absolute; /* Posicionar el spinner */
+  top: 30%; /* Centrar verticalmente */
+  left: 40%; /* Centrar horizontalmente */
+  animation: spin 0.6s linear infinite; /* Animación de giro */
+  transform: translate(-50%, -50%); /* Centrar el spinner */
+  pointer-events: none; /* Evitar que el spinner interfiera con el clic */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.toggle-button {
+  background-color: #3498db; /* Color de fondo inicial (azul) */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 50px; /* Bordes redondeados */
+  padding: 12px 24px; /* Espaciado interno */
+  font-size: 20px; /* Tamaño del texto */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.4s, transform 0.3s; /* Transiciones suaves */
+  width: 160px; /* Ancho constante para el botón */
+  height: 50px; /* Altura constante para el botón */
+  box-sizing: border-box; /* Incluye padding y border en el cálculo de ancho y alto */
+  position: relative; /* Para las animaciones de pseudo-elementos */
+  overflow: hidden; /* Para esconder el pseudo-elemento al salir */
+}
+
+.toggle-button:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%; /* Tamaño del efecto de fondo */
+  height: 300%; /* Tamaño del efecto de fondo */
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%; /* Bordes redondeados */
+  transform: translate(-50%, -50%) scale(0); /* Escala inicial para la animación */
+  transition: transform 0.4s ease; /* Transición suave */
+}
+
+.toggle-button.active:before {
+  transform: translate(-50%, -50%) scale(1); /* Escala al 100% cuando está activo */
+}
+
+.toggle-button.active {
+  background-color: #4caf50; /* Color cuando está activado (verde) */
+  box-shadow: 0 4px 20px rgba(0, 255, 0, 0.5); /* Sombra verde */
+}
+
+.toggle-button:hover {
+  transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+}
+
+.toggle-button:active {
+  transform: scale(0.95); /* Reduce ligeramente el tamaño al hacer clic */
+}
+
+.search-container {
+  display: flex; /* Usar flexbox para alinear elementos */
+  align-items: center; /* Alinear verticalmente */
+  background-color: #ecf0f1; /* Fondo del campo de búsqueda (gris claro) */
+  border: 2px solid #3498db; /* Borde del campo de búsqueda */
+  border-radius: 25px; /* Bordes redondeados */
+  overflow: hidden; /* Esconde el desbordamiento */
+  transition: box-shadow 0.5s, border-color 0.5s; /* Transición suave para el efecto de sombra y borde */
+}
+
+.search-container:hover {
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.5); /* Sombra verde al pasar el mouse */
+  transform: scale(1.05); /* Escalar el contenedor al pasar el mouse */
+  border-color: #4caf50; /* Cambia el color del borde a verde */
+}
+
+.search-container:hover .search-button {
+  background-color: #4caf50; /* Color del botón cuando está en hover */
+}
+
+.search-input {
+  border: none; /* Sin borde para el input */
+  outline: none; /* Sin contorno */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  flex-grow: 1; /* Ocupa el espacio disponible */
+  background-color: transparent; /* Fondo transparente para el input */
+}
+
+.search-button {
+  background-color: #3498db; /* Color de fondo inicial (azul) */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  padding: 10px; /* Espaciado interno */
+  transition: transform 0.5s; /* Transiciones más lentas */
+}
+
+.search-button:hover {
+  transform: scale(1.1); /* Aumentar el tamaño al pasar el mouse */
+}
+
+.search-icon {
+  width: 20px; /* Ancho del ícono */
+  height: 20px; /* Alto del ícono */
+  fill: white; /* Color del ícono */
+}
+
+.range-container {
+  display: flex; /* Usar flexbox para alinear elementos */
+  align-items: center; /* Alinear verticalmente */
+  width: 300px; /* Ancho del contenedor */
+  margin: 20px auto; /* Centrando el contenedor */
+  background-color: #ecf0f1; /* Fondo del contenedor */
+  border-radius: 15px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+}
+
+.range-input {
+  -webkit-appearance: none; /* Ocultar el estilo predeterminado */
+  width: 100%; /* Ancho completo del contenedor */
+  height: 8px; /* Alto de la barra */
+  border-radius: 5px; /* Bordes redondeados */
+  background: #3498db; /* Color de fondo inicial */
+  outline: none; /* Sin contorno */
+  transition: background 0.3s; /* Transición suave para el color de fondo */
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Ocultar el estilo predeterminado del pulgar */
+  appearance: none; /* Para navegadores que no soportan -webkit */
+  width: 20px; /* Ancho del pulgar */
+  height: 20px; /* Alto del pulgar */
+  border-radius: 50%; /* Bordes redondeados */
+  background: #fff; /* Color del pulgar */
+  border: 2px solid #3498db; /* Borde del pulgar */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el pulgar */
+  transition: background 0.3s, transform 0.3s; /* Transiciones suaves */
+}
+
+.range-input::-webkit-slider-thumb:hover {
+  background: #4caf50; /* Cambia a verde en hover */
+  border: none;
+  transform: scale(1.1); /* Aumentar el tamaño al pasar el mouse */
+}
+
+.range-input:focus {
+  background: #2980b9; /* Cambia el fondo al estar enfocado */
+}
+
+.range-input:active {
+  background: #4caf50; /* Cambia el fondo al arrastrar */
+}
+
+.range-value {
+  margin-left: 20px; /* Espacio entre la barra y el valor */
+  font-size: 16px; /* Tamaño del texto */
+  color: #2c3e50; /* Color del texto */
+  font-weight: 800;
+}
+
+.range-input.active {
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.8); /* Sombra verde al cambiar el valor */
+}
+.social-section {
+  text-align: center;
+  margin-top: 50px; /* Ajusta el margen superior */
+  color: white; /* Color del texto */
+}
+
+.blueprint-title {
+  font-size: 36px; /* Tamaño de fuente más grande */
+  font-weight: bold;
+}
+
+.social-text {
+  font-size: 24px; /* Tamaño de fuente más grande */
+  margin-bottom: 20px; /* Espaciado debajo del texto */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px; /* Espaciado entre iconos */
+}
+
+.icon {
+  width: 40px; /* Ajusta el tamaño del icono */
+  height: 40px; /* Ajusta el tamaño del icono */
+  fill: white; /* Color del icono */
+  transition: fill 0.3s ease; /* Transición suave para hover */
+}
+
+.social-icons a:hover .icon {
+  fill: #1e90ff; /* Color al pasar el mouse (ajusta como quieras) */
+}
